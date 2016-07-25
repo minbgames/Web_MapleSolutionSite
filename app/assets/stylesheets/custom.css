@@ -1,0 +1,20 @@
+body{
+    font-size:20px;
+    font-weight: bold;
+}
+
+.title_head{
+    font-size:30px;
+}
+
+
+.answer_result span{
+    color:red;
+    font-size:25px;
+}
+
+
+.solution_view{
+    font-weight:lighter;
+    font-size:20px;
+}

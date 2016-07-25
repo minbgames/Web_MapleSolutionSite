@@ -1,0 +1,138 @@
+<div class="container">
+    
+    <% i=1 %>
+    <% while i<=@question_count[@chapter.to_i-1]%>
+    <% question="question"+i.to_s%>
+    <!------------------question1---------------------->
+    <div class=<%= question %> style="margin-top:150px; margin-bottom:100px">
+        <div class="q_ask card-panel text-darken-3 z-depth-3 deep-purple lighten-4">
+        <span class="title_head"><%= i %>.</span>
+        <!--question content start-->
+        <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+i.to_s+"/"+@subject+"."+@chapter+"."+i.to_s+"_1"%>
+        <!--question content end-->
+        </div>
+        
+        <!----------------buttons--------------->
+        <div class="q_button" style="margin-top:20px" >
+        <button type="submit" class="btn btn-default answer_button deep-purple" onclick="f_answer(<%= i %>)">답만보기</button>
+        <button type="submit" class="btn btn-default solution_button deep-purple" onclick="f_solution(<%= i %>)">해설보기</button>
+        </div>
+        
+        <div class="q_content" style="margin-top:20px;">
+            <div class="answer_view" style="display: none;" >
+                <span class="answer_result"></span><br>
+            </div>
+            <br>
+            
+            <div class="solution_view card-panel text-darken-3 z-depth-3 teal lighten-4" style="display: none;" >
+                <span class="solution_result"></span>
+            </div>
+        </div>
+        
+    </div>
+    
+    <% i +=1 %>
+    <% end %>
+    
+    <script>
+    
+    /*************************answer******************************/
+    
+    var str = new Array();
+    var num = new Array();
+    var n= new Array();
+    var answer = new Array();
+    var f_n = new Array();
+  
+     function f_answer(question_number){
+        variable_save(question_number);
+        change_value(str);
+        
+        if(confirm_blank(str))
+        {
+            $(".question"+question_number+" .answer_view").hide(function(){
+            
+            });
+            alert("빈칸이 있습니다.");
+        }
+        
+        else
+        {
+            var present_value = $(".question"+question_number+" .answer_view").attr('style');
+            var standard_value = "display: none;"
+            
+            if(present_value==standard_value)
+            {   
+                /*********answer content start***********/
+                <% j=1 %>
+                <% while j<=@question_count[@chapter.to_i-1]%>
+                if(question_number==<%= j %>){
+                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+j.to_s+"/"+@subject+"."+@chapter+"."+j.to_s+"_2.js"%>
+                }
+                <% j +=1 %>
+                <% end %>
+                /*********answer content end***********/
+                $(".question"+question_number+" .answer_view").show(function(){
+                });
+            }
+            else
+            {
+                 $(".question"+question_number+" .answer_view").hide(function(){
+                
+                });
+            }
+        }
+    }
+    
+    /*************************solution******************************/
+    
+    function f_solution(question_number){
+        
+        variable_save(question_number);
+        change_value(str);
+        
+        if(confirm_blank(str))
+        {
+            $(".question"+question_number+" .solution_view").hide(function(){
+            
+            });
+            alert("빈칸이 있습니다.");
+        }
+        
+        else
+        {
+            
+            var present_value = $(".question"+question_number+" .solution_view").attr('style');
+            var standard_value = "display: none;"
+            
+            if(present_value==standard_value)
+            {
+                /*********solution content start***********/
+                <% k=1 %>
+                <% while k<=@question_count[@chapter.to_i-1]%>
+                if(question_number==<%= k %>){
+                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+k.to_s+"/"+@subject+"."+@chapter+"."+k.to_s+"_3.js"%>
+                }
+                <% k +=1 %>
+                <% end %>
+                 /*********solution content end***********/
+                
+                $(".question"+question_number+" .solution_view").show(function(){
+                
+                });
+            }
+            else
+            {
+                 $(".question"+question_number+" .solution_view").hide(function(){
+                
+                });
+            }
+        }
+    }
+    
+
+    </script>
+    
+
+    
+</div>
