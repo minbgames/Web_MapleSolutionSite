@@ -8,7 +8,7 @@
         <div class="q_ask card-panel text-darken-3 z-depth-3 deep-purple lighten-4">
         <span class="title_head"><%= i %>.</span>
         <!--question content start-->
-        <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+i.to_s+"/"+@subject+"."+@chapter+"."+i.to_s+"_1"%>
+        <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+i.to_s+"/1"%>
         <!--question content end-->
         </div>
         
@@ -22,7 +22,6 @@
             <div class="answer_view" style="display: none;" >
                 <span class="answer_result"></span><br>
             </div>
-            <br>
             
             <div class="solution_view card-panel text-darken-3 z-depth-3 teal lighten-4" style="display: none;" >
                 <span class="solution_result"></span>
@@ -43,6 +42,7 @@
     var n= new Array();
     var answer = new Array();
     var f_n = new Array();
+    var str_answer=new Array();
   
      function f_answer(question_number){
         variable_save(question_number);
@@ -67,7 +67,7 @@
                 <% j=1 %>
                 <% while j<=@question_count[@chapter.to_i-1]%>
                 if(question_number==<%= j %>){
-                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+j.to_s+"/"+@subject+"."+@chapter+"."+j.to_s+"_2.js"%>
+                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+j.to_s+"/2.js"%>
                 }
                 <% j +=1 %>
                 <% end %>
@@ -111,7 +111,7 @@
                 <% k=1 %>
                 <% while k<=@question_count[@chapter.to_i-1]%>
                 if(question_number==<%= k %>){
-                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+k.to_s+"/"+@subject+"."+@chapter+"."+k.to_s+"_3.js"%>
+                <%= render file: "home/"+@subject+"/ch."+@chapter+"/question."+k.to_s+"/3.js"%>
                 }
                 <% k +=1 %>
                 <% end %>

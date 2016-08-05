@@ -29,7 +29,7 @@ class HomeController < ApplicationController
         @subject="math2"
         @chapter=params[:post_id]
         @main_subject="미적분학2"
-        @question_count=[0,0,12];
+        @question_count=[16,12,14,16,14,12,13,11,14,12];
         render file: "home/solution"
     end
 end
